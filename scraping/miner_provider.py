@@ -2,7 +2,13 @@ from typing import Callable, Dict
 from common.data import DataSource
 from scraping.scraper import Scraper, ScraperId
 
-MINER_SCRAPER_FACTORIES = {}
+# Import Redfin API scraper
+from scraping.custom.redfin_api_scraper_complete import create_redfin_api_scraper_complete
+
+# Register scrapers here
+MINER_SCRAPER_FACTORIES = {
+    DataSource.SZILL_VALI: create_redfin_api_scraper_complete,
+}
 
 
 class MinerScraperProvider:
